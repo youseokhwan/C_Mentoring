@@ -2,10 +2,10 @@ import sys
 import random  # 난수
 
 
-class UpDownGame:
-    name = ''
-    target = 0
-    count = 0
+class UpDown:
+    name = ''  # 유저의 이름
+    target = 0  # 정답
+    count = 0  # 시도 횟수
 
     def __init__(self, name):
         self.name = name
@@ -23,14 +23,14 @@ class UpDownGame:
         if value == self.target:  # 정답이면
             print('정답입니다!')
             print(self.count, '번 시도하셨습니다!')
-            sys.exit(0)
+            sys.exit(0)  # 강제 종료
         elif value < self.target:  # 입력 값이 정답보다 작으면
             print('UP!')
         else:  # 입력 값이 정답보다 크면
             print('DOWN!')
 
 
-game = UpDownGame('석환')
+game = UpDown('석환')
 game.start()
 while True:
     print('값 입력 >> ', end='')

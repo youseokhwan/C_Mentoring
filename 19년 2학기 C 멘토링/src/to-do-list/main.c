@@ -2,15 +2,20 @@
 #include <stdlib.h>
 #include "list.h"
 #include "edit.h"
+#include "task.h"
 
 void printMenu();
-void selectMenu();
+void selectMenu(struct Task* ptr);
+
+int lastIndex = 0;
 
 int main() {
+	struct Task task[200];
+
 	while(1) {
 		system("cls");
 		printMenu();
-		selectMenu();
+		selectMenu(task);
 		system("pause");
 	}
 
@@ -25,7 +30,7 @@ void printMenu() {
 	printf("4. 종료\n");
 }
 
-void selectMenu() {
+void selectMenu(struct Task* ptr) {
 	int num = 0;
 
 	printf("선택: ");
@@ -35,13 +40,13 @@ void selectMenu() {
 
 	switch(num) {
 		case 1:
-			printList();
+			printList(ptr);
 			break;
 		case 2:
-			addTask();
+			addTask(ptr);
 			break;
 		case 3:
-			removeTask();
+			removeTask(ptr);
 			break;
 		case 4:
 			printf("종료합니다.\n");

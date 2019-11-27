@@ -17,10 +17,23 @@ void addTask(struct Task* ptr) {
 	strcpy_s(ptr[lastIndex].content, sizeof(content), content);
 
 	printf("추가되었습니다.\n");
-
 	lastIndex++;
 }
 
 void removeTask(struct Task* ptr) {
-	printf("removeTask()\n");
+	int index;
+
+	printf("[3. 삭제]\n");
+	
+	printf("삭제할 번호: ");
+	scanf_s("%d", &index);
+
+	lastIndex--;
+	for(int i = index-1; i < lastIndex; i++) {
+		ptr[i].num = ptr[i+1].num;
+		ptr[i].isVital = ptr[i+1].isVital;
+		strcpy_s(ptr[i].content, sizeof(ptr[i].content), ptr[i+1].content);
+	}
+
+	printf("삭제되었습니다.\n");
 }
